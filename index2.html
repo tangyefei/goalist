@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Goalist: A Good Helper To Manager Your Goal!</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<h3 id="clock"></h3>
+	<div id="main">
+	</div>
+	<script id="goalist-table-template" type="text/x-dot-template">
+		 <table class="table table-condensed table-hover">
+	    	<thead>
+	    		<tr>
+	    			<th></th>
+	    			<th>标题</th>
+	    			<th>状态</th>
+	    			<th>目标相关</th>
+	    			<th>番茄数</th>
+	    			<th>紧急</th>
+	    			<th>操作</th>
+	    			<th>备注</th>
+	    		</tr>
+	    	</thead>
+	    	<tbody>
+	    		{{~it.datas :data:index}}
+	                <tr data-id="{{= data.id}}" 
+		                {{? it.	status_completed == data.status}}
+	                   	 	class="success"
+		                {{?? it.status_discard == data.status}}
+		                    class="active"
+		                {{?}}
+	                >
+	                	<td><span 
+	                		{{? it.status_completed == data.status}}
+		                   	 	class="glyphicon glyphicon-ok"
+			                {{?? it.status_discard == data.status}}
+			                    class="glyphicon glyphicon-remove"
+			                {{?}}
+	                	></span></td>
+	                	<td>{{= data.title}}</td>
+	                	<td>{{= data.status}}</td>
+	                	<td>{{= (data.goaltive ? 'Yes' : 'No')}}</td>
+	                	<td>{{= data.tomatoInvest}} / {{= data.tomatoNeed}} - {{= data.breakTimes}} breaks</td>
+	                	<td>{{= data.priority}}</td>
+	                	<td>
+		    				<button class="toggleBtn">Start/Break</button>
+		    				<button class="markBtn">Mark</button>
+		    				<button class="discardBtn">Discard</button>
+		    			</td>
+	                	<td><span class="glyphicon glyphicon-comment"></span>{{= data.comment}}</td>
+	                </tr>
+	            {{~}}
+	            <tr><td>&nbsp;</td><td></td> <td></td><td></td><td></td><td></td><td></td><td></td></tr>
+	                <tr class="warning"> 
+	                	<td><button id="addBtn"><span class="glyphicon glyphicon-plus"></span></button></td> 
+	                	<td><input id="title" placeholder="Title"></td> 
+                		<td></td> 
+	                	<td><select id="goaltive"><option value="true">yes</option><option value="false">no</option></select></td> 
+            			<td><input id="tomatoNeed" placeholder="Tomato"></td> 
+	                	<td><select id="priority"><option value="1">1</option><option value="2">2</option></select></td> 
+	                	<td></td> 
+	                	<td></td> 
+                	</tr>
+	    	</tbody>
+		</table>
+	</script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+	<script src="js/lib/doT.min.js"></script>
+	<script src="js/lib/underscore.min.js"></script>
+	<script src="js/store.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
+

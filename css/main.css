@@ -1,0 +1,17 @@
+#main table tr.active td button.toggleBtn,
+#main table tr.active td button.markBtn,
+#main table tr.active td button.discardBtn,
+#main table tr.success td button.toggleBtn,
+#main table tr.success td button.markBtn,
+#main table tr.success td button.discardBtn {
+	display: none!important;
+}
+
+#main table tr td:last-child span{
+	padding-right: 20px;
+}
+
+#main table tr:last-child td:first-child button {
+	background-color: transparent;
+	border-radius: 5px;
+}
